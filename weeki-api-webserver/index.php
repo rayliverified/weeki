@@ -178,7 +178,7 @@ $app->put('/group/update/:toUpdate', 'authenticate', function($toUpdate) use ($a
 });
 
 // Update user GCM ID.
-$app->put('/user', 'authenticate', function() use ($app)
+$app->put('/user/', 'authenticate', function() use ($app)
 {
     $gcm_id = $app->request->params('gcm');
     global $user_id;
@@ -226,7 +226,7 @@ $app->get('/users/directory/:toFind', function($toFind)
     $result            = $db->searchUsers($toFind);
     $response["error"] = false;
     $response['users'] = array();
-    while ($users = $result->fetch_assoc()) {
+    while ($users = $result->fetch(PDO::FETCH_ASSOC)) {
         $user               = array();
         $user["user"]       = $users["id"];
         $user["username"]   = $users["username"];
@@ -295,8 +295,8 @@ function sendGroupMessage($group_id, $user_id, $message_type, $message, $extras)
     $response['error'] = $addResponse['error'];
     $response['code']  = $addResponse['code'];
     if ($addResponse['error'] == false) {
-        require_once __DIR__ . './libs/gcm/gcm.php';
-        require_once __DIR__ . './libs/gcm/push.php';
+        require_once __DIR__ . '/libs/gcm/gcm.php';
+        require_once __DIR__ . '/libs/gcm/push.php';
 
         $members          = $db->getGroupMembers($group_id);
         $registration_ids = array();
@@ -352,8 +352,8 @@ $app->post('/user/message/:id', 'authenticate', function($to_user_id) use ($app)
     $response['error'] = $addResponse['error'];
     $response['code']  = $addResponse['code'];
     if ($addResponse['error'] == false) {
-        require_once __DIR__ . './libs/gcm/gcm.php';
-        require_once __DIR__ . './libs/gcm/push.php';
+        require_once __DIR__ . '/libs/gcm/gcm.php';
+        require_once __DIR__ . '/libs/gcm/push.php';
         $gcm                  = new GCM();
         $push                 = new Push();
         $receiver             = $db->getUserByUsername($to_user_id);
@@ -397,14 +397,14 @@ $app->get('/users/messages/', 'authenticate', function()
 // Retreiving unread messages of a single user.
 function retreiveMessages($user_id)
 {
-    require_once __DIR__ . './libs/gcm/gcm.php';
-    require_once __DIR__ . './libs/gcm/push.php';
+    require_once __DIR__ . '/libs/gcm/gcm.php';
+    require_once __DIR__ . '/libs/gcm/push.php';
     $db                = new DbHandler();
     $gcm               = new GCM();
     $push              = new Push();
     $result            = $db->getAllMessages($user_id);
     $response["error"] = false;
-    while ($messages = $result->fetch_assoc()) {
+    while ($messages = $result->fetch(PDO::FETCH_ASSOC)) {
         $receiver             = $db->getUser($user_id);
         $sender               = $db->getUser($messages["sender_id"]);
         $data['user']         = $receiver["username"];
@@ -430,13 +430,13 @@ function retreiveMessages($user_id)
 function retreiveGroupMessages($user_id)
 {
     $db = new DbHandler();
-    require_once __DIR__ . './libs/gcm/gcm.php';
-    require_once __DIR__ . './libs/gcm/push.php';
+    require_once __DIR__ . '/libs/gcm/gcm.php';
+    require_once __DIR__ . '/libs/gcm/push.php';
     $gcm               = new GCM();
     $push              = new Push();
     $result            = $db->getAllGroupConversation($user_id);
     $response["error"] = false;
-    while ($groupconvo = $result->fetch_assoc()) {
+    while ($groupconvo = $result->fetch(PDO::FETCH_ASSOC)) {
         $msg   = array();
         $group = array();
 

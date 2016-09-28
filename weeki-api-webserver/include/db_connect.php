@@ -9,7 +9,12 @@ class DbConnect
     function connect()
     {
         include_once dirname(__FILE__) . '/config.php';
-        $this->conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+        $host = DB_HOST;
+        $db_name = DB_NAME;
+        $user = DB_USERNAME;
+        $pass = DB_PASSWORD;
+        $this->conn = new PDO("mysql:host=$host;dbname=$db_name", $user, $pass);
+        //$this->conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
