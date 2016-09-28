@@ -1,0 +1,426 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Weeki Messenger - Instant Messenger (App)</title>
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+    <style type="text/css" media="screen">
+        p,
+        table,
+        hr,
+        .box {
+            margin-bottom: 25px;
+        }
+        .box p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+
+        <h3 class="center alt">&ldquo;Instant Messenger&rdquo; documentation by &ldquo;SoftDev&rdquo;</h3>
+
+        <hr>
+
+        <h1 class="center">&ldquo;Instant Messenger&rdquo;</h1>
+
+        <div class="borderTop">
+            <div class="span-6 colborder info prepend-1">
+                <p class="prepend-top">
+                    <strong>
+					Created: 08/20/2016<br>
+					By: SoftDev<br>
+					Email: <a href="mailto:Technoengineering@hotmail.co.uk">Technoengineering@hotmail.co.uk</a>
+					</strong>
+                </p>
+            </div>
+            <!-- end div .span-6 -->
+
+            <div class="span-12 last">
+                <p class="prepend-top append-0">Fast, fully designed and instant messaging app for android with a lot of great features. With this application, you can talk with anyone in your friend list without any limitations with attachment feature like sharing images and sending emoticons. The app is fully designed and is purely coded to make it easier to understand for developers. You can find friends, add them and start talking with them without any wait just like instant messaging.</p>
+            </div>
+        </div>
+        <!-- end div .borderTop -->
+
+        <hr>
+
+        <h2 id="toc" class="alt">Table of Contents</h2>
+        <ol class="alpha">
+            <li><a href="#about">What is this?</a>
+            </li>
+            <li><a href="#features">Features</a>
+            </li>
+            <li><a href="#config">App Configuration</a>
+            </li>
+            <li><a href="#gcmsetup">Google Cloud Messaging (GCM) Setup</a>
+            </li>
+            <li><a href="#mysql">MySQL Queries</a>
+            </li>
+            <li><a href="#faq">Frequently Asked Questions <em class="quiet small">(FAQ)</em></a>
+            </li>
+            <li><a href="#licenses">Licenses</em></a>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h3 id="about"><strong>A) What is this?</strong> - <a href="#toc">top</a></h3>
+        <p>Weeki Messenger, weeki is just a random name that I gave to this application. It is actual an instant messaging app just like WhatsApp for android platform and it has alot of features which includes group messaging, image sharing, emoticons, profile, friend system and alot more. It's really easy to re-skin and re-developed in every way you want. You can add alot more features without any worries of errors. The code is very well written to make it easier for every developer to understand (like you).</p>
+        <hr>
+
+        <h3 id="features"><strong>B) Features</strong> - <a href="#toc">top</a></h3>
+
+        <ol>
+            <li>Personal Messages</li>
+            <li>Group Messages</li>
+            <li>Image Sharing</li>
+            <li>Emoticons</li>
+            <li>Client-sided Friends system</li>
+            <li>Push Notifications</li>
+            <li>Fully designed</li>
+            <li>Encrypted Passwords</li>
+            <li>Profile View</li>
+        </ol>
+
+        <hr>
+
+        <h3 id="config"><strong>C) App Configuration</strong> - <a href="#toc">top</a></h3>
+
+        <div>
+      	You&#39;ve to configure some app and web server settings before making your app run.&nbsp;</div>
+        <div>
+        	Open upload.php from <strong>&#39;/include/&#39;</strong> folder and replace <strong>&#39;your-host-ip&#39;</strong> with your host ip address. This file is used to upload images.</div>
+        <div>
+        	&nbsp;</div>
+        <div>
+        	Second, open Config.php from <strong>&#39;/include/&#39;</strong> folder and replace database credentials with your database credentials and configure name and host with your database name and web-server host.</div>
+        <div>
+        	&nbsp;</div>
+        <div>
+        	Third, goto Config.java file of our project which is located&nbsp;</div>
+        <div>
+        	under <strong>&#39;\app\src\main\java\com\softdev\weekimessenger\Configuration\&#39;</strong> using android studio or any ordinary text editor. Now change your&nbsp;</div>
+        <div>
+        	BASE_URI with your web server address and replace <strong>&#39;your-ip&#39;</strong> with your host ip address.</div>
+        <div>
+        	&nbsp;</div>
+        <div>
+        	It&#39;s all done!</div>
+
+        <hr class="space">
+
+        <hr>
+
+        <h3 id="gcmsetup"><strong>C) GCM Setup</strong> - <a href="#toc">top</a></h3>
+
+        <div>
+            You&#39;ve to first setup GCM (Google cloud messaging) to make your app run properly.&nbsp;</div>
+        <div>
+            Follow these steps to obtain your API key:</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            &bull; Goto <a href="https://console.developers.google.com/project">Google Developer Console</a> and create your new app. Set a name of your new app (i.e: &#39;messenger&#39;) and&nbsp;</div>
+        <div>
+            click Dashboard on the left side.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            &bull; Now click <strong>&#39;Library&#39;</strong> from the left side and select &#39;Google CLoud Messaging&#39; from Mobile APIs category and press Enable from top behind search bar.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            &bull; Now you&#39;ve successfully enabled GCM for your app but you still need credentials to start working with it.</div>
+        <div>
+            Click &#39;Credentials&#39; from the left side and press <strong>&#39;Create credentials&#39;</strong>. Choose API Key from the drop down menu and click &#39;Server key&#39;.&nbsp;</div>
+        <div>
+            You&#39;ll now receive api key which is use to operate GCM. Copy it and paste it on PHP (config.php), replace <strong>&#39;your-gcm-id&#39;</strong> with your new API Key.&nbsp;</div>
+        <div>
+            Config file is located under <strong>&#39;/include/&#39;</strong> folder.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            - Now you&#39;ve to integrate GCM in your android project too, so for that, follow these steps:</div>
+        <div>
+            You need GCM configuration file to operate GCM in your project. Go <a href="https://developers.google.com/cloud-messaging/android/client">here</a> and&nbsp;</div>
+        <div>
+            click &#39;Get a Configuration file&#39; which will redirect you to Developer console where you&#39;ll be&nbsp;</div>
+        <div>
+            asked for App name and package name. Write in &#39;weeki-messenger&#39; as App name and &#39;com.softdev.weekimessenger&#39; as package name.&nbsp;</div>
+        <div>
+            You can change app name and project name from android studio if you want your own.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            &bull; Now click <strong>&#39;Choose and configure services&#39;</strong> and press &#39;Enable google cloud messaging&#39; which will give you another button as &#39;Download google-services.json&#39;&nbsp;</div>
+        <div>
+            which will download configuration file on your PC. After downloading <strong>&#39;google-services.json&#39;</strong> file, move it to project app folder and you&#39;re all done.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            (If you&#39;re still having some trouble with this, feel free to contact me).</div>
+        <div>
+            &nbsp;</div>
+
+        <hr class="space">
+
+        <hr>
+
+        <h3 id="mysql"><strong>E) MySQL Queries</strong> - <a href="#toc">top</a></h3>
+
+        <p>You've to first setup the database before running the app because it is the main priority of our application. I've created the database very smooth and easy to use and it'll surely make our messaging system fast. Execute these queries on MySQL with any IDE or web tool and it'll automatically create tables on your specified database.</p>
+
+        <pre>	CREATE TABLE weeki.users (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  registration_id TEXT DEFAULT NULL,
+  api TEXT NOT NULL,
+  created_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  disabled TINYINT(1) DEFAULT 0,
+  status VARCHAR(130) DEFAULT 'Just another user',
+  icon TEXT DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id (id)
+);
+
+CREATE TABLE weeki.groups (
+  group_id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  icon TEXT DEFAULT NULL,
+  description VARCHAR(130) NOT NULL,
+  creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (group_id)
+);
+
+CREATE TABLE weeki.messages (
+  message_id INT(11) NOT NULL AUTO_INCREMENT,
+  receiver_id INT(11) NOT NULL,
+  sender_id INT(11) NOT NULL,
+  msg_type INT(11) NOT NULL DEFAULT 0,
+  message VARCHAR(255) NOT NULL,
+  created_At DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (message_id),
+  UNIQUE INDEX id (message_id),
+  CONSTRAINT FK_messages_users_id FOREIGN KEY (receiver_id)
+    REFERENCES weeki.users(id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE weeki.messages_receipt (
+  message_id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  is_delivered INT(11) NOT NULL DEFAULT 0,
+  CONSTRAINT FK_messages_receipt_messages_id FOREIGN KEY (message_id)
+    REFERENCES weeki.messages(message_id) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT FK_messages_receipt_users_id FOREIGN KEY (user_id)
+    REFERENCES weeki.users(id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE weeki.group_messages (
+  message_id INT(11) NOT NULL AUTO_INCREMENT,
+  group_id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  msg_type INT(11) NOT NULL DEFAULT 0,
+  message VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  PRIMARY KEY (message_id),
+  CONSTRAINT FK_group_messages_groups_group_id FOREIGN KEY (group_id)
+    REFERENCES weeki.groups(group_id) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT FK_group_messages_users_id FOREIGN KEY (user_id)
+    REFERENCES weeki.users(id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE weeki.group_members (
+  group_id INT(11) DEFAULT NULL,
+  user_id INT(11) DEFAULT NULL,
+  CONSTRAINT FK_group_members_groups_group_id FOREIGN KEY (group_id)
+    REFERENCES weeki.groups(group_id) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT FK_group_members_users_id FOREIGN KEY (user_id)
+    REFERENCES weeki.users(id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE weeki.group_receipt (
+  message_id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  is_delivered INT(11) NOT NULL DEFAULT 0,
+  INDEX FK_group_stats_groups_group_id (user_id),
+  CONSTRAINT FK_group_stats_group_messages_message_id FOREIGN KEY (message_id)
+    REFERENCES weeki.group_messages(message_id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE FUNCTION weeki.CreateGroup(GroupName VARCHAR(50), GroupIcon TEXT, GroupDescription VARCHAR(130), GroupCreator INT)
+  RETURNS int(11)
+  DETERMINISTIC
+BEGIN
+  DECLARE groupID INT;
+  INSERT INTO groups (name, icon, description) VALUES (GroupName, GroupIcon, GroupDescription);
+  SET groupID = LAST_INSERT_ID();
+  INSERT INTO group_members VALUES (groupID, GroupCreator);
+  RETURN groupID;
+END;
+
+CREATE FUNCTION weeki.AddMessage(r VARCHAR(255), s INT, t INT, m VARCHAR(255), creation DATETIME)
+  RETURNS int(11)
+  DETERMINISTIC
+BEGIN
+        DECLARE lastID INT;
+        DECLARE receiver INT;
+        SELECT id INTO receiver from users WHERE username=r;
+        INSERT INTO messages (receiver_id, sender_id, msg_type, message, created_At) values(receiver, s, t, m, creation);
+        SET lastID = LAST_INSERT_ID();
+        INSERT INTO messages_receipt (message_id, user_id, is_delivered) VALUES (lastID, receiver, 0);
+        RETURN lastID;
+END;
+
+CREATE FUNCTION weeki.AddGroupMessage(gid INT, s INT, t INT, m VARCHAR(255), creation DATETIME)
+  RETURNS int(11)
+  DETERMINISTIC
+BEGIN
+  DECLARE lastID INT; DECLARE rowCount INT;
+  SELECT COUNT(*) INTO rowCount FROM group_members WHERE user_id = s AND group_id = gid;
+  IF rowCount = 1 THEN
+  INSERT INTO group_messages (group_id, user_id, msg_type, message, created_at) VALUES (gid, s, t, m, creation);
+  SET lastID = LAST_INSERT_ID();
+  INSERT INTO group_receipt (message_id, user_id, is_delivered) SELECT gm.message_id, gmembers.user_id, 0 FROM
+  group_messages gm LEFT JOIN group_members gmembers ON gmembers.group_id = gm.group_id WHERE gm.group_id = gid AND gm.message_id = lastID AND NOT gmembers.user_id = s;
+  RETURN lastID;
+  ELSE
+    return 0;
+  END IF;
+END;
+
+CREATE DEFINER = 'root'@'localhost'
+FUNCTION weeki.AddGroupMember(GroupID INT, MemberName VARCHAR(255), Username INT)
+  RETURNS int(11)
+BEGIN
+  INSERT INTO group_members VALUES (GroupID, MemberName);
+  RETURN 1;
+END;
+		</pre>
+        <hr>
+        <h3 id="faq"><strong>F) Frequently Asked Questions (FAQ)</strong> - <a href="#toc">top</a></h3>
+
+        <div>
+            <strong>Q) Is this an instant messaging application?</strong>
+        </div>
+        <div>
+            A) Yes.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Does it support group messaging and personal messaging together?</strong>
+        </div>
+        <div>
+            A) Yes.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Does it support emoticons?</strong>
+        </div>
+        <div>
+            A) Yes.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Does it support attachments (like images)?</strong>
+        </div>
+        <div>
+            A) Yes.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Can I add more attachments (like voice, video) easily?</strong>
+        </div>
+        <div>
+            A) Yes you can. I&#39;ve made everything simple and easier to understand and&nbsp;</div>
+        <div>
+            you can easily add voice and video attachment support by adding a couple&nbsp;</div>
+        <div>
+            of codes on PHP and android project. You can also contact me using email and I can help you out.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Can I ask for bug fixes and other support needed to run this app?</strong>
+        </div>
+        <div>
+            A) Yes you can. Feel free to contact me on my personal email and I&#39;ll catch you up as soon as possible for me.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) How does this app syncs the messages from server?</strong>
+        </div>
+        <div>
+            A) It uses GCM to get notifications. Whenever there&#39;s a new message our server sends&nbsp;</div>
+        <div>
+            a push notification and notify our app about a new message. All messages are stored in server no matter if your app is online or offline.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Does this app sync messages which were send when my app was offline?</strong>
+        </div>
+        <div>
+            A) Yes, ofcourse. As written above, all the messages are stored on server and marked as delivered whenever your app gets it.&nbsp;</div>
+        <div>
+            If somehow your app is offline, server will save the message on database and will wait for the app to get online to send the message(s).</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) Do I need a very fast server to run this app smooth?</strong>
+        </div>
+        <div>
+            A) Not really. You just need a web host with decent specifications to run your app smoothly and fast.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) How many users are limited for group messaging?</strong>
+        </div>
+        <div>
+            A) None. You can add/kick any and how much members you want. There&#39;s no limitation as long as your server is having pretty decent specifications. Otherwise, it&#39;s all good.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Q) How do I setup GCM?</strong>
+        </div>
+        <div>
+            A) I&#39;ve created a help document in this same folder, with a name of &#39;gcm-setup&#39;. You&#39;ll find every important detail to setup GCM.</div>
+        <div>
+            &nbsp;</div>
+        <div>
+            <strong>Feel free to ask more questions on my email (if you&#39;ve any which is not written above).</strong>
+        </div>
+        </p>
+
+        <hr>
+        <h3 id="licenses"><strong>G) Licenses</strong> - <a href="#toc">top</a></h3>
+        <p>
+      	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Application Icon, and other icons inside of it is licensed under&nbsp;<a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" style="vertical-align: baseline; font-family: Arial, Helvetica, sans-serif; border: 0px none; outline: 0px; padding: 0px; margin: 0px; color: rgb(59, 89, 152); text-decoration: none; font-size: 15.2px; line-height: 22.8px;" target="_blank">CC Attribution-Noncommercial-No Derivate 4.0</a>.</span></p>
+        <p>
+        	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">The Slim Framework is licensed under the MIT license. See&nbsp;<a href="https://github.com/slimphp/Slim/blob/3.x/LICENSE.md" style="box-sizing: border-box; color: rgb(64, 120, 192); text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">License File</a><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">&nbsp;for more information.</span></span></p>
+        <p>
+        	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;"><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Rockerhieu Emojicon is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Version 2.0</a>.</span></span></p>
+        <p>
+        	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;"><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Hdodenhof CircularImageView&nbsp;</span></span><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">is licensed under&nbsp;</span><a href="http://www.apache.org/licenses/LICENSE-2.0.html" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Apache Version 2.0</a><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">.</span></p>
+        <p>
+        	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Square Picasso&nbsp;</span><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">is licensed under&nbsp;</span><a href="http://www.apache.org/licenses/LICENSE-2.0.html" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Apache Version 2.0</a><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">.</span></p>
+        <p>
+        	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Android Volley&nbsp;</span><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">is licensed under&nbsp;</span><a href="http://www.apache.org/licenses/LICENSE-2.0.html" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Apache Version 2.0</a><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">.</span></p>
+        <p>
+        	<span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Google GCM&nbsp;</span><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">is licensed under&nbsp;</span><a href="http://www.apache.org/licenses/LICENSE-2.0.html" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">Apache Version 2.0</a><span style="color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; line-height: 24px;">.</span></p>
+        <p>
+
+        <p><a href="#toc">Go To Table of Contents</a>
+        <hr class="space">
+    </div>
+    <!-- end div .container -->
+</body>
+
+</html>
