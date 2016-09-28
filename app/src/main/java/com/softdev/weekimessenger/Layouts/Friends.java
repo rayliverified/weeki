@@ -3,6 +3,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,23 +25,18 @@ public class Friends extends Fragment {
     ArrayList<User> friendList;
     DatabaseHandler dbHandler;
     LinearLayoutManager layoutManager;
-
+    SwipeRefreshLayout swipeLayout;
     TextView txtNF;
     RecyclerView listView;
 
     public Friends() {}
     public static Friends newInstance() { return new Friends(); }
 
-    public void Refresh() { LoadFriends(); }
+    public void Refresh() {
+        swipeLayout.setRefreshing(true);
+        LoadFriends(); }
 
     void LoadFriends() {
-        ProgressDialog pDialog = new ProgressDialog(getActivity());
-        pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        pDialog.setMessage("Loading friend list...");
-        pDialog.setIndeterminate(true);
-        pDialog.setCanceledOnTouchOutside(false);
-        pDialog.setCancelable(false);
-        pDialog.show();
         ArrayList friends = dbHandler.getAllUsers();
         if (!friends.equals(friendList)) {
             friendList.clear();
@@ -50,8 +46,9 @@ public class Friends extends Fragment {
                     friendList.add(u);
                 }
             }
+            swipeLayout.setRefreshing(false);
         }
-        pDialog.dismiss();
+        swipeLayout.setRefreshing(false);
         fAdapter.notifyDataSetChanged();
         if (friendList.size() != 0) {
             txtNF.setVisibility(View.GONE);
@@ -60,10 +57,6 @@ public class Friends extends Fragment {
             txtNF.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
         }
-    }
-
-    void LoadUsersData() {
-
     }
 
     @Override
@@ -85,7 +78,14 @@ public class Friends extends Fragment {
                 startActivity(intent);
             }
         });
-
+        swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipeLayout);
+        swipeLayout.setRefreshing(true);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoadFriends();
+            }
+        });
         listView.setLayoutManager(layoutManager);
         listView.addItemDecoration(new ItemsDivider(getContext()));
         listView.setAdapter(fAdapter);
@@ -93,5 +93,11 @@ public class Friends extends Fragment {
         // Load List of friends in your database
         LoadFriends();
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
     }
 }

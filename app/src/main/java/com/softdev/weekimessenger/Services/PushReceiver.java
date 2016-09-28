@@ -3,13 +3,13 @@ package com.softdev.weekimessenger.Services;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GcmListenerService;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 import com.softdev.weekimessenger.Configuration.Config;
 import com.softdev.weekimessenger.Configuration.NotificationHandler;
 import com.softdev.weekimessenger.Group;
@@ -21,7 +21,9 @@ import com.softdev.weekimessenger.Message;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PushReceiver extends GcmListenerService {
+import java.util.Map;
+
+public class PushReceiver extends FirebaseMessagingService {
     NotificationHandler nHandler;
     DatabaseHandler dbHandler;
     SharedPreferences sharedPref;
@@ -38,10 +40,12 @@ public class PushReceiver extends GcmListenerService {
     }
 
     @Override
-    public void onMessageReceived(String from, Bundle data) {
-        String title = data.getString("title");
-        String flag = data.getString("flag");
-        String strData = data.getString("data");
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        Map data = remoteMessage.getData();
+        String from = remoteMessage.getFrom();
+        String title = data.get("title").toString();
+        String flag = data.get("flag").toString();
+        String strData = data.get("data").toString();
         if (AppHandler.getInstance().getDataManager().getString("user", null) == null) {
             return;
         }

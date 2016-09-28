@@ -88,4 +88,8 @@
     <string name="prefs_chat_delConvo">Delete all conversations</string>
     <string name="prefs_chat_delConvoSum">Delete all your private and group conversations.</string>
     <string name="blockedUsersSum">Blocked users will no longer be able to send you messages.\n\nUsers who you block will not get any notification or message regarding this block.</string>
+
+    <!--Admob Ads-->
+    <!-- TODO: Uncomment next line and place your adUnit Id to enable Banner ads by Google Admob. -->
+    <!--<string name="banner_ad_unit_id">ca-app-pub-your-ad-unit-id</string>-->
 </resources>

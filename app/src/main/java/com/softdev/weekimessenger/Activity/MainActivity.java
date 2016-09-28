@@ -26,9 +26,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.softdev.weekimessenger.Configuration.Config;
 import com.softdev.weekimessenger.Configuration.NotificationHandler;
 import com.softdev.weekimessenger.Handlers.AppHandler;
@@ -36,7 +36,6 @@ import com.softdev.weekimessenger.Layouts.Chatbox;
 import com.softdev.weekimessenger.Layouts.Friends;
 import com.softdev.weekimessenger.Layouts.Groups;
 import com.softdev.weekimessenger.Layouts.Inbox;
-import com.softdev.weekimessenger.Message;
 import com.softdev.weekimessenger.R;
 import com.softdev.weekimessenger.Services.GCMService;
 import com.softdev.weekimessenger.Services.WebService;
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     WebService webService;
     int isNotificationPaused;
 
-    static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     BroadcastReceiver mBroadcastReceiver;
 
     @Override
@@ -122,33 +120,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageScrollStateChanged(int state) {}
         });
-        if (checkPlayServices()) {
-            Intent intent = new Intent(this, GCMService.class);
-            startService(intent);
-            if (InboxFragment != null) {
+        Intent intent = new Intent(this, GCMService.class);
+        startService(intent);
+        if (InboxFragment != null) {
                 webService.RetrieveMessages();
-            } else {
-                InboxFragment = Inbox.newInstance();
-            }
+        } else {
+            InboxFragment = Inbox.newInstance();
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.prefs_chat, false);
         PreferenceManager.setDefaultValues(this, R.xml.prefs_notifications, false);
-    }
 
-    private boolean checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "This device is not supported.", Toast.LENGTH_LONG).show();
-                finish();
-            }
-            return false;
-        }
-        return true;
+        /*
+        Uncomment these lines to enable mobile ads.
+         */
+//        MobileAds.initialize(getApplicationContext(), "ca-app-pub-your-app-id");
+//
+//        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
     }
 
     private void HandleNotification(Intent intent) {
@@ -158,9 +148,6 @@ public class MainActivity extends AppCompatActivity {
             InboxFragment.Refresh();
         } else if (flag == Config.PUSH_TYPE_USER) {
             final String sender = intent.getStringExtra("sender");
-            final String message = intent.getStringExtra("message");
-            final String creation = intent.getStringExtra("creation");
-            Message m = new Message(sender, message, creation);
             if (sender != null) {
                 String name = AppHandler.getInstance().getDBHandler().GetUserInfo(sender).getName();
                 InboxFragment.Refresh();

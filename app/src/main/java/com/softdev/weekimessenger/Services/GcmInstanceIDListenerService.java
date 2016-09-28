@@ -1,10 +1,9 @@
 package com.softdev.weekimessenger.Services;
 
 import android.content.Intent;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 
-import com.google.android.gms.iid.InstanceIDListenerService;
-
-public class GcmInstanceIDListenerService extends InstanceIDListenerService {
+public class GcmInstanceIDListenerService extends FirebaseInstanceIdService {
 
     // Raises when GCM ID is changed.
     @Override

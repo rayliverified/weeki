@@ -11,12 +11,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.softdev.weekimessenger.Activity.Login;
 import com.softdev.weekimessenger.Configuration.Config;
 import com.softdev.weekimessenger.Handlers.AppHandler;
-import com.softdev.weekimessenger.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,12 +38,12 @@ public class GCMService extends IntentService
     }
 
     private void registerGCM() {
-        String token = null;
+        String refreshedToken = null;
         try
         {
-            InstanceID instanceID = InstanceID.getInstance(this);
-            token = instanceID.getToken(getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-            UpdateUserId(token);
+            refreshedToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d(TAG, "Refreshed token: " + refreshedToken);
+            UpdateUserId(refreshedToken);
             AppHandler.getInstance().getDataManager().setInt("gcmUpdate", 1);
         }
         catch (Exception ex) {
@@ -53,7 +51,7 @@ public class GCMService extends IntentService
             AppHandler.getInstance().getDataManager().setInt("gcmUpdate", 0);
         }
         Intent registrationComplete = new Intent(Config.GCM_UPDATED);
-        registrationComplete.putExtra("token", token);
+        registrationComplete.putExtra("token", refreshedToken);
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
     }
 

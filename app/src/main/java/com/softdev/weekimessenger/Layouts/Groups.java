@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +22,7 @@ import com.softdev.weekimessenger.R;
 import java.util.ArrayList;
 
 public class Groups extends Fragment {
-
+    SwipeRefreshLayout swipeLayout;
     GroupsAdapter gAdapter;
     RecyclerView groupsView;
     ArrayList<Group> groupsList;
@@ -45,7 +46,13 @@ public class Groups extends Fragment {
         dbHandler = AppHandler.getInstance().getDBHandler();
         layoutManager = new LinearLayoutManager(getContext());
         status = (TextView) v.findViewById(R.id.no_group_txtView);
-
+        swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipeLayout);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LoadGroups();
+            }
+        });
         groupsView.setLayoutManager(layoutManager);
         groupsView.addItemDecoration(new ItemsDivider(getContext()));
         groupsView.setItemAnimator(new DefaultItemAnimator());
@@ -67,12 +74,13 @@ public class Groups extends Fragment {
             public void onLongClick(View view, int position) {}
         }));
 
+        swipeLayout.setRefreshing(true);
         // Loading groups.
         LoadGroups();
         return v;
     }
 
-    public void Refresh() { LoadGroups(); }
+    public void Refresh() { swipeLayout.setRefreshing(true); LoadGroups(); }
 
     void LoadGroups()
     {
@@ -89,6 +97,7 @@ public class Groups extends Fragment {
             status.setVisibility(View.VISIBLE);
             groupsView.setVisibility(View.GONE);
         }
+        swipeLayout.setRefreshing(false);
     }
 
     @Override

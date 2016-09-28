@@ -1,8 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.softdev.weekimessenger.Layouts.Groups">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.softdev.weekimessenger.Layouts.Groups"
+    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/groupsView"
@@ -20,3 +25,4 @@
         android:layout_gravity="center"
         android:visibility="visible" />
 </FrameLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -8,9 +8,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.softdev.weekimessenger.Configuration.Config;
 import com.softdev.weekimessenger.Handlers.AppHandler;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 public class WebService {
