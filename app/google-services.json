@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1018020755696",
+    "project_id": "texigram-app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018020755696:android:4fc370a110598a09",
+        "android_client_info": {
+          "package_name": "com.texigram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi5ptE7bziPwEh767O64aaEmvCkKROfU4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
