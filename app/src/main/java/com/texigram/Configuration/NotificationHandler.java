@@ -16,7 +16,7 @@ import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 
 import com.texigram.Handlers.AppHandler;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;

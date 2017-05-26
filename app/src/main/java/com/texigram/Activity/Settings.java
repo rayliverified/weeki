@@ -26,7 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.texigram.Configuration.Config;
 import com.texigram.Handlers.AppHandler;
 import com.texigram.Layouts.BlockedUsers;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

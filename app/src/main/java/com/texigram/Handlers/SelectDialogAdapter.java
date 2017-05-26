@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.User;
 import com.squareup.picasso.Picasso;
 

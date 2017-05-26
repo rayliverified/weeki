@@ -41,7 +41,7 @@ import com.texigram.Handlers.AppHandler;
 import com.texigram.Handlers.DatabaseHandler;
 import com.texigram.Handlers.GroupMemberListAdapter;
 import com.texigram.Message;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.User;
 import com.squareup.picasso.Picasso;
 

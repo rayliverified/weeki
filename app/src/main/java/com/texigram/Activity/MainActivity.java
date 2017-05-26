@@ -36,7 +36,7 @@ import com.texigram.Layouts.Chatbox;
 import com.texigram.Layouts.Friends;
 import com.texigram.Layouts.Groups;
 import com.texigram.Layouts.Inbox;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.Services.GCMService;
 import com.texigram.Services.WebService;
 

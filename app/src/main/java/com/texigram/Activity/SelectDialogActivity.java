@@ -16,7 +16,7 @@ import com.texigram.Handlers.AppHandler;
 import com.texigram.Handlers.DatabaseHandler;
 import com.texigram.Handlers.SelectDialogAdapter;
 import com.texigram.Layouts.ItemsDivider;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.User;
 
 import java.util.ArrayList;

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.texigram.Handlers.AppHandler;
 import com.texigram.Handlers.DatabaseHandler;
 import com.texigram.Handlers.FriendListAdapter;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.User;
 
 import java.util.ArrayList;

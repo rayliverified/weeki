@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.User;
 import com.squareup.picasso.Picasso;
 

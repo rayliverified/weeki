@@ -49,7 +49,7 @@ import com.rockerhieu.emojicon.EmojiconGridFragment;
 import com.rockerhieu.emojicon.EmojiconMultiAutoCompleteTextView;
 import com.rockerhieu.emojicon.EmojiconsFragment;
 import com.rockerhieu.emojicon.emoji.Emojicon;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.texigram.Activity.SelectDialogActivity;
 import com.texigram.Activity.ViewProfile;
 import com.texigram.Configuration.Config;

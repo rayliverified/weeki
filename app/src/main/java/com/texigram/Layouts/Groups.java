@@ -17,7 +17,7 @@ import com.texigram.Group;
 import com.texigram.Handlers.AppHandler;
 import com.texigram.Handlers.DatabaseHandler;
 import com.texigram.Handlers.GroupsAdapter;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 
 import java.util.ArrayList;
 

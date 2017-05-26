@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.texigram.Group;
-import com.softdev.weekimessenger.R;
+import com.texigram.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
